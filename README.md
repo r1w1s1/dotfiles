@@ -2,7 +2,7 @@
 My dotfiles 
 
 
-I keep my **dotfiles** into /home/ricardson/GitHub/
+I keep my dotfiles into **/home/ricardson/GitHub/**
 
 
 ```
