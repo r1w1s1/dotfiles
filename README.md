@@ -24,9 +24,12 @@ cd /home/ricardson/GitHub/dotfiles
 
 stow vim -t ../../
 
+```
 
+
+```
 cd /home/ricardson
-
+ls
 
 lrwxrwxrwx.  1 ricardson ricardson   24 May 13 21:19 .vim -> GitHub/dotfiles/vim/.vim
 lrwxrwxrwx.  1 ricardson ricardson   26 May 13 21:19 .vimrc -> GitHub/dotfiles/vim/.vimrc
