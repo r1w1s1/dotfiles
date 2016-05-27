@@ -1,5 +1,4 @@
-# My dotfiles
-## My .config  
+## My .config 
 
 
 ```
