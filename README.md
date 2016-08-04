@@ -23,6 +23,7 @@ dotfiles
 cd /home/ricardson/GitHub/dotfiles
 
 stow vim -t ../../
+stow github -t ../../
 ```
 
 

@@ -1,0 +1,16 @@
+[user]
+	        name = ricardson
+	        email = ricardsonwilliams@gmail.com
+[credential]
+	        helper = cache --timeout=3600
+
+[color "status"]
+	        added = yellow
+	        changed = green
+	        untracked = cyan
+
+[alias]
+	        st = status
+	        ci = commit -m
+	        logtree = log --graph --oneline --decorate --all
+
