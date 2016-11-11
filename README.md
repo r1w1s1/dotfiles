@@ -21,6 +21,7 @@ dotfiles
 
 ```
 cd /home/ricardson/GitHub/dotfiles
+git submodule update --init --recursive
 
 stow vim -t ../../
 stow github -t ../../
