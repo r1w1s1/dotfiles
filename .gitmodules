@@ -10,3 +10,6 @@
 [submodule "vim/.vim/bundle/vim-vagrant"]
 	path = vim/.vim/bundle/vim-vagrant
 	url = https://github.com/hashivim/vim-vagrant.git
+[submodule "vim/.vim/bundle/vim-airline"]
+	path = vim/.vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git

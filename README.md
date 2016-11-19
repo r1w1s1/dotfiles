@@ -36,6 +36,12 @@ lrwxrwxrwx.  1 ricardson ricardson   24 May 13 21:19 .vim -> GitHub/dotfiles/vim
 lrwxrwxrwx.  1 ricardson ricardson   26 May 13 21:19 .vimrc -> GitHub/dotfiles/vim/.vimrc
 ```
 
+## How to add vim plugins using git submodules (add vim-airline plugin)
+
+```
+cd /home/ricardson/GitHub/dotfiles
+git submodule add https://github.com/vim-airline/vim-airline.git vim/.vim/bundle/vim-airline
+```
 
 
 * [GNU Stow](http://www.gnu.org/software/stow/) - Symlink farm manager which takes distinct packages of software and/or data located in separate directories on the filesystem, and makes them appear to be installed in the same place.
