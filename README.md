@@ -25,6 +25,7 @@ git submodule update --init --recursive
 
 stow vim -t ../../
 stow github -t ../../
+stow zshrc -t ../../
 ```
 
 
