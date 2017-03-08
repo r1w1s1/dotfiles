@@ -8,3 +8,4 @@ colorscheme solarized
 map ic :s/^/#/g<CR>:let @/ = ""<CR>
 map rc :s/^#//g<CR>:let @/ = ""<CR>
 set ttimeoutlen=5
+autocmd BufEnter * EnableStripWhitespaceOnSave
