@@ -9,3 +9,6 @@ map ic :s/^/#/g<CR>:let @/ = ""<CR>
 map rc :s/^#//g<CR>:let @/ = ""<CR>
 set ttimeoutlen=5
 autocmd BufEnter * EnableStripWhitespaceOnSave
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
