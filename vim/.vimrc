@@ -12,3 +12,5 @@ autocmd BufEnter * EnableStripWhitespaceOnSave
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
+set nocompatible
+filetype plugin on
