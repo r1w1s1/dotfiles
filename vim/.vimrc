@@ -14,4 +14,3 @@ set pastetoggle=<F2>
 set showmode
 set nocompatible
 filetype plugin on
-let g:airline_highlighting_cache = 1
