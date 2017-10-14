@@ -1,9 +1,6 @@
 [submodule "vim/.vim/bundle/Dockerfile.vim"]
 	path = vim/.vim/bundle/Dockerfile.vim
 	url = https://github.com/ekalinin/Dockerfile.vim.git
-[submodule "vim/.vim/bundle/ansible-vim"]
-	path = vim/.vim/bundle/ansible-vim
-	url = https://github.com/pearofducks/ansible-vim.git
 [submodule "vim/.vim/bundle/vim-sensible"]
 	path = vim/.vim/bundle/vim-sensible
 	url = https://github.com/tpope/vim-sensible.git
