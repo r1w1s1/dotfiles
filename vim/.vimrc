@@ -12,6 +12,9 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 set nocompatible
+set nobackup
+set noswapfile                                                                                                                                       
+set noundofile  
 filetype plugin on
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
