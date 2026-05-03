@@ -1,0 +1,42 @@
+#!/bin/sh
+
+ROOT=sudo
+
+# Open a terminal (st) with the given title and command
+# example: st -t terminal_title -e command 
+term() {
+    st -t "$1" -e "${@:2}"
+}
+
+choice=$(printf "%s\n" \
+    "Browser" \
+    "Terminal" \
+    "IRC" \
+    "Mail" \
+    "PDF" \
+    "Editor" \
+    "Files" \
+    "Mixer" \
+    "WiFi" \
+    "Bluetooth" \
+    "Reboot" \
+    "Shutdown" |
+    dmenu -i -l 12 -p "Menu" \
+        -fn "Iosevka Term-11" \
+        -nb '#000000' -nf '#ffffff' \
+        -sb '#005f87' -sf '#ffffff')
+
+case "$choice" in
+    Browser)    firefox ;;
+    Terminal)   term st mtm ;; 
+    IRC)        term senpai senpai ;;
+    Mail)       term mutt mutt ;;
+    PDF)        pdf-open.sh ;;
+    Editor)     geany ;;
+    Files)      term dfm dfm ;;
+    Mixer)      pavucontrol ;;
+    WiFi)       term wifitui "$ROOT" wifitui ;;
+    Bluetooth)  blueman-manager ;;
+    Reboot)     "$ROOT" /sbin/reboot ;;
+    Shutdown)   "$ROOT" /sbin/poweroff ;;
+esac
