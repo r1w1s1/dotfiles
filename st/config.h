@@ -5,7 +5,13 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Iosevka Term:size=11:antialias=true:autohint=true";
+
+static char *font = "Iosevka Term:size=11:antialias=true";
+
+/*
+static char *font = "Ioskeley Mono Term:size=10";
+*/
+
 static int borderpx = 1;
 
 /*

@@ -9,11 +9,11 @@
  * - Focused window border in gold/yellow
  * - Unfocused window border in dark gray
  * - Slightly thicker borders for mouse usage
- * - Consistent font with st (Iosevka Term)
+ * - Consistent font with st (Sans Mono)
  */
 
 /* window border width (px) */
-static const unsigned int borderpx  = 2;   /* thicker than default for clear focus */
+static const unsigned int borderpx  = 1;   /* thicker than default for clear focus */
 
 /* snap pixel for window movement */
 static const unsigned int snap      = 32;
@@ -27,11 +27,11 @@ static const int topbar             = 1;   /* bar at the top */
  * Same font used in st for visual consistency
  */
 static const char *fonts[] = {
-	"Iosevka Term:size=11:antialias=true:autohint=true"
+        "Iosevka Term:size=11:antialias=true"
 };
 
 static const char dmenufont[] =
-	"Iosevka Term:size=11:antialias=true:autohint=true";
+        "Iosevka Term:size=11:antialias=true";
 
 /*
  * Color scheme
@@ -41,12 +41,13 @@ static const char dmenufont[] =
 static const char col_bg[]     = "#1c1c1c";
 static const char col_fg[]     = "#cccccc";
 static const char col_border[] = "#3a3a3a"; /* unfocused border */
-static const char col_gold[]   = "#e0b800"; /* focused border */
+//static const char col_focus[] = "#d7a900"; /* old yellow/gold */
+static const char col_focus[]   = "#cccccc"; /* focused border */
 
 static const char *colors[][3] = {
 	/*               fg        bg        border */
 	[SchemeNorm] = { col_fg,  col_bg,   col_border },
-	[SchemeSel]  = { col_fg,  col_bg,   col_gold   },
+	[SchemeSel]  = { col_fg,  col_bg,   col_focus   },
 };
 
 /*
@@ -69,10 +70,10 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
  */
 static const Rule rules[] = {
 
-	/* class, instance, title, tags mask, isfloating, monitor */
+	/* class,           instance,   title, tags mask, isfloating, monitor */
 	
 	/* firefox always starts on tag 1 and floating */
-	{ "firefox",            NULL,    NULL,  1 << 0,    1,           -1 },
+	{ "firefox",            NULL,    NULL,  1 << 0,    0,           -1 },
 
 	/* nsxiv: image viewer, always floating */
 	{ "Nsxiv",              NULL,    NULL,  0,         1,           -1 },
@@ -92,7 +93,12 @@ static const Rule rules[] = {
  */
 static const float mfact     = 0.55;
 static const int nmaster     = 1;
-static const int resizehints = 1;
+/*
+ * resizehints:
+ * 1 = respect terminal size hints (may leave gaps)
+ * 0 = force windows to fill entire tiled area
+ */
+static const int resizehints = 0;
 static const int lockfullscreen = 1;
 static const int refreshrate = 120;
 
@@ -133,7 +139,7 @@ static const char *dmenucmd[] = {
 	"-fn", dmenufont,
 	"-nb", col_bg,
 	"-nf", col_fg,
-	"-sb", col_gold,
+	"-sb", col_focus,
 	"-sf", col_bg,
 	NULL
 };

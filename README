@@ -7,7 +7,9 @@ This repository contains a small set of configuration files
 copied from my home directory after they stabilize.
 
 It is an archive, not a system.
-Nothing here deploys, installs, or manages anything.
+
+Sync flows one way: home -> repo, never back.
+Cloning this cannot touch your system.
 
 Read.
 Compare.

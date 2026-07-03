@@ -39,8 +39,8 @@ DAY_COLOR="#c6ccd6"
 NIGHT_COLOR="#24272d"
 
 # Leave empty ("") to disable wallpapers
-DAY_WALLPAPER="/home/r1w1s1/wallpapers/578309.jpg"
-NIGHT_WALLPAPER="/home/r1w1s1/wallpapers/578309.jpg"
+DAY_WALLPAPER="/home/r1w1s1/wallpapers/slackware-simple.png"
+NIGHT_WALLPAPER="/home/r1w1s1/wallpapers/slackware-simple.png"
 
 DAY_START=9     # 09:00
 NIGHT_START=19  # 19:00

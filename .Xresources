@@ -1,6 +1,6 @@
 ! ~/.Xresources
 ! Load/reload with:
-!   xrdb -merge ~/.Xresources
+!   xrdb -load ~/.Xresources
 
 ! ==============================
 !  Global Xft
@@ -22,7 +22,10 @@ XTerm*internalBorder: 8
 XTerm*utf8: 1
 XTerm*termName: xterm-256color
 XTerm*saveLines: 1000
-XTerm*cursorBlink: true
+! Match st cursorshape = 6: steady, thicker bar cursor; no blinking prompt.
+XTerm*cursorBlink: false
+XTerm*cursorShape: bar
+XTerm*cursorBarWidth: 2
 
 ! --- Scrollbar ---
 XTerm*scrollBar: true
@@ -72,7 +75,7 @@ UXTerm*faceSize: 11
 UXTerm*internalBorder: 8
 UXTerm*termName: xterm-256color
 UXTerm*saveLines: 1000
-UXTerm*cursorBlink: true
+! UXTerm*cursorBlink: true
 UXTerm*scrollBar: true
 UXTerm*rightScrollBar: true
 UXTerm*scrollBarThickness: 10
@@ -171,4 +174,3 @@ xmenu.separatorWidth: 1
 xmenu.gap: 4
 xmenu.height: 22
 xmenu.width: 180
-

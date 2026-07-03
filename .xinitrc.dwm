@@ -20,17 +20,6 @@ if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
     eval "$(dbus-launch --sh-syntax --exit-with-session)"
 fi
 
-# Start PipeWire stack (ordered + small delay)
-pkill -xu "$USER" wireplumber 2>/dev/null
-pkill -xu "$USER" pipewire-pulse 2>/dev/null
-pkill -xu "$USER" pipewire 2>/dev/null
-sleep 0.5
-pipewire &
-sleep 0.3
-pipewire-pulse &
-sleep 0.3
-wireplumber &
-
 # User helpers
 . "$HOME/.xinitrc.common"
 
@@ -38,4 +27,3 @@ slstatus &
 
 # Start the window manager
 exec /usr/bin/dwm
-

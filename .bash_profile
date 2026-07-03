@@ -17,13 +17,19 @@ export LESS='-R'
 
 # Nvi configuration via EXINIT (faster than .nexrc file, no file I/O)
 # Docs: https://sites.google.com/a/bostic.com/keithbostic/vi
-export EXINIT='set showmode|set showmatch|set flash|set ruler|set report=1|map J 5j|map K 5k'
+
+export EXINIT='set showmode|set showmatch|set flash|set ruler|set report=1|map J 5j'
+
+# another way to read .nexrc as complement
+#export EXINIT='set showmode|set showmatch|set flash|set ruler|set report=1|map J 5j|map K 5k|source ~/.nexrc'
 
 # showmode   - display current mode (INSERT/COMMAND) in status line
+# autoindent - auto-indent new lines to match previous line's indentation
 # showmatch  - briefly flash matching bracket/paren when closing one is typed
 # flash      - flash screen instead of audible bell
 # ruler      - show cursor row,column position in status line
 # report=1   - report any line change (default is 5)
+# list       - show $ at end of each line and ^I for tabs (whitespace visible)
 # map J 5j   - remap J to move down 5 lines (replaces join command, use :j instead)
 # map K 5k   - remap K to move up 5 lines (replaces man lookup)
 
@@ -43,7 +49,19 @@ export PATH
 # -----------------------------------------------------------
 # Auto-start session menu on tty1 (only if no X yet)
 # -----------------------------------------------------------
-if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ] && [ -z "$SESSION_MENU" ]; then
-    export SESSION_MENU=1
-    exec "$HOME/.bin/session-menu-bsddialog.sh"
-fi
+#if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ] && [ -z "$SESSION_MENU" ]; then
+#    export SESSION_MENU=1
+#    exec "$HOME/.bin/session-menu-dialog.sh"
+#fi
+
+# --- session aliases ---
+alias dwm='startx ~/.xinitrc.dwm'
+alias cwm='startx ~/.xinitrc.cwm'
+alias fluxbox='startx ~/.xinitrc.fluxbox'
+
+# --- login hint: only on tty1, and only outside X ---
+#if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+#    echo
+#    echo "sessions: dwm  progman  (or just stay here)"
+#    echo
+#fi

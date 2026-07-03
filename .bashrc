@@ -29,11 +29,10 @@ export GPG_TTY="$(tty)"
 
 # -----------------------------------------------------------
 # Source system-wide shell setup for non-login shells
-# (login shells get this via /etc/profile)
 # -----------------------------------------------------------
 if ! shopt -q login_shell; then
     for sh in /etc/profile.d/*.sh; do
-        [ -r "$sh" ] && . "$sh"
+        [ -x "$sh" ] && . "$sh"
     done
     unset sh
 fi
@@ -51,7 +50,11 @@ alias vi='nvi'
 alias e='nvi'
 alias v='nvi'
 alias grep='grep --color=auto'
-alias feed='sfeed_curses "$HOME/.sfeed/feeds/*"'
+
+export SFEED_URL_FILE="$HOME/.sfeed/urls"
+[ -f "$SFEED_URL_FILE" ] || touch "$SFEED_URL_FILE"
+alias feed='sfeed_curses "$HOME"/.sfeed/feeds/*'
+
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
@@ -63,9 +66,14 @@ alias gb='git branch'
 alias gp='git push'
 alias gf='git fetch'
 alias gdn='git --no-pager diff'
-alias git-backup='git push --mirror codeberg'
+alias git-codeberg='git push --mirror codeberg'
+alias git-repo='git push --mirror repo'
+alias git-github='git push --mirror github'
+alias git-slackforge='git push --mirror slackware-forge'
 alias fetch='NO_COLOR=1 slackfetch'
-alias screenhelp='cat ~/.screen-cheatsheet'
+alias fetchcow='NO_COLOR=1 slackfetch | cowsay -n'
+alias tmuxhelp='cat ~/.tmux-cheatsheet.txt'
+alias vmssh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
 # -----------------------------------------------------------
 # Prompt
@@ -76,4 +84,17 @@ prompt_command() {
 # Safe append: preserves hooks from /etc/profile.d/*.sh (like z's _z --add)
 PROMPT_COMMAND="prompt_command${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
 PS1='$(prompt.sh) '
+
+# -----------------------------------------------------------
+# packages count
+# -----------------------------------------------------------
+pkgcount() {
+    total=$(ls /var/log/packages | wc -l)
+    sbo=$(ls /var/log/packages | grep '_SBo$' | wc -l)
+    official=$((total - sbo))
+
+    printf 'Packages: %s total\n' "$total"
+    printf 'Official: %s\n' "$official"
+    printf 'SBo: %s\n' "$sbo"
+}
 

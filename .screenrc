@@ -28,3 +28,10 @@ bind h focus left               # Ctrl+A + h = ←
 bind j focus down               # Ctrl+A + j = ↓
 bind k focus up                 # Ctrl+A + k = ↑
 bind l focus right              # Ctrl+A + l = →
+
+# Split + auto-create shell (tmux-style behavior, default keys)
+bind S eval "split"     "focus" "screen"   # Ctrl+A + S = horizontal split with shell
+bind | eval "split -v"  "focus" "screen"   # Ctrl+A + | = vertical split with shell 
+
+# Neutralize the dangerous quit binding from /etc/screenrc
+bind \\
