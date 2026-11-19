@@ -1,0 +1,27 @@
+#!/bin/sh
+# ~/.xinitrc.common
+
+# Start the screen locker.
+#xautolock -time 5 -locker "xlock -mode blank -echokeys -echokey '*' -dpmsoff 0" -detectsleep &
+xscreensaver -no-splash &
+xset +dpms
+xset dpms 600 1200 1800
+
+# Apply the keyboard layout before sxhkd grabs the keys.
+setxkbmap br thinkpad
+
+# Start the global hotkey daemon.
+#sxhkd &
+
+# Hide the mouse cursor when it is inactive.
+xhidecursor &
+
+# Set wallpaper
+hsetroot -fill /home/r1w1s1/wallpapers/r1w1s1/Monochrome_Manga_Giants_Under_Starts.png
+#hsetroot -fill /home/r1w1s1/wallpapers/r1w1s1/kamekura-teal.png
+
+#https://desktopcolors.com/os/windows-nt-4-0
+#xsetroot -solid '#008080'
+
+# Start the day/night root background helper.
+#dash $HOME/.bin/root-daynight.sh &

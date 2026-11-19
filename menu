@@ -1,0 +1,85 @@
+#!/bin/sh
+
+ROOT=sudo
+
+# Open terminal with command
+term() {
+    title=$1
+    shift
+    xterm -geometry 120x30 -T "$title" -e "$@"
+}
+
+termfloating() {
+    title=$1
+    shift
+    xterm -name floating-xterm \
+        -geometry 120x30 \
+        -T "$title" \
+        -e "$@"
+}
+
+#term() {
+#    st -t "$1" -e "${@:2}"
+#}
+
+termbig() {
+    title=$1
+    shift
+    xterm -maximized -T "$title" -e "$@"
+}
+
+#termbig() {
+#    st -g 140x40 -t "$1" -e "${@:2}"
+#}
+
+termtmux() {
+    xterm -T terminal -e sh -c '
+        if ! tmux has-session -t main 2>/dev/null; then
+            tmux new-session -d -s main
+            tmux new-window -t main:1
+            tmux new-window -t main:2
+        fi
+        tmux select-window -t main:0
+        exec tmux attach-session -t main
+    '
+}
+
+choice=$(printf "%s\n" \
+     "browser" \
+     "termtmux" \
+     "terminal" \
+     "floating-terminal" \
+     "irc" \
+     "feed" \
+     "scratch" \
+     "mail" \
+     "pdf" \
+     "editor" \
+     "files" \
+     "mixer" \
+     "wifi" \
+     "bluetooth" \
+     "htop" \
+     "reboot" \
+     "shutdown" |
+     dmenu -i -l 14 -p "Menu")
+
+case "$choice" in
+     (browser)    firefox ;;
+     (termtmux)   termtmux ;;
+     (terminal)   term terminal bash ;;
+     (floating-terminal) termfloating terminal bash ;;
+     (irc)        termbig senpai senpai ;;
+     (feed)       term feed sfeed_curses "$HOME"/.sfeed/feeds/* ;;
+     (scratch)    term scratch ~/.bin/scratch ;;
+     (mail)       termbig mutt mutt ;;
+     (pdf)        pdf-open.sh ;;
+     (editor)     geany ;;
+     (files)      termbig dfm dfm ;;
+     (mixer)      pavucontrol ;;
+     (wifi)       term wifitui "$ROOT" wifitui ;;
+     (htop)       termbig htop htop ;;
+     (bluetooth)  blueman-manager ;;
+     (reboot)     "$ROOT" /sbin/reboot ;;
+     (shutdown)   "$ROOT" /sbin/poweroff ;;
+esac

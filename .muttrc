@@ -1,0 +1,70 @@
+# --- Mail storage ---
+set mbox_type=Maildir
+set folder="~/Mail/gmail"
+set spoolfile="+Inbox"
+set record="+[Gmail].Sent Mail"
+set postponed="+Drafts"
+set trash="+[Gmail].Trash"
+
+# --- Identity ---
+set from="r1w1s1 <ricardsonwilliams@gmail.com>"
+set realname="r1w1s1"
+set use_from=yes
+set envelope_from=yes
+
+# --- Sending ---
+set sendmail="/usr/bin/msmtp"
+
+# --- Editor ---
+set editor="nvi"
+
+# --- UI (keep it quiet) ---
+set status_on_top
+set menu_scroll
+set markers=no
+set pager_stop
+set ascii_chars=yes
+
+# --- Index layout ---
+# Classic mutt layout, preserving flags and date,
+# with a wider From field for full email visibility.
+set index_format="%4C %Z %{%b %d} %-32.32F %s"
+
+# --- Sorting ---
+set sort=reverse-date-received
+set date_format="%Y-%m-%d %H:%M"
+
+# --- Attachments ---
+auto_view text/plain
+
+# Do not ask for confirmation when deleting messages or quitting mutt.
+# This enables a fast, mailx/pine-like workflow:
+#   d  = mark message for deletion
+#   u  = undelete message (before sync)
+#   $  = sync mailbox without confirmation
+#   q  = quit without extra prompts
+#
+#set delete=yes
+#set quit=yes
+
+# --- Signature ---
+set signature="~/.mutt/signature.txt"
+set sig_dashes=yes
+
+# --- Minimal colors ---
+
+# Default text
+color normal default default
+
+# Cursor / current line (classic mutt: reverse video)
+mono indicator reverse
+
+# Unread messages
+color index brightwhite default "~N"
+
+# Status bar
+color status brightwhite blue
+
+# --- Address book ---
+#source ~/.mutt/aliases
+source "pass show email-service/address |"

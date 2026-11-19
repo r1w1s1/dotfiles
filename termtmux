@@ -1,0 +1,11 @@
+#!/bin/sh
+
+exec xterm -T terminal -e sh -c '
+    if ! tmux has-session -t main 2>/dev/null; then
+        tmux new-session -d -s main
+        tmux new-window -t main:1
+        tmux new-window -t main:2
+    fi
+    tmux select-window -t main:0
+    exec tmux attach-session -t main
+'

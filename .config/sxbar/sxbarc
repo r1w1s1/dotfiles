@@ -1,0 +1,45 @@
+# sxbar configuration for the bspwm session.
+
+bar_position         : top
+height               : 28
+vertical_padding     : 0
+horizontal_padding   : 0
+text_padding         : 2
+border               : false
+border_width         : 0
+background_colour    : #1c1c1c
+foreground_colour    : #cccccc
+border_colour        : #3a3a3a
+font                 : Ttyp0 OTB
+font_size            : 16
+
+# Roman-numeral desktops used by bspwm.
+workspaces.labels              : I II III IV V VI VII VIII IX X
+workspaces.active_background   : #cccccc
+workspaces.active_foreground   : #1c1c1c
+workspaces.inactive_background : #1c1c1c
+workspaces.inactive_foreground : #cccccc
+workspaces.padding_left        : 8
+workspaces.padding_right       : 8
+workspaces.spacing             : 2
+workspaces.position            : left
+
+module.0.name       : cpu
+module.0.cmd        : printf '%s%s%s%%' 'CPU' "$(printf '\072')" "$(top -bn1 | awk -F',' '/Cpu\(s\)/ {gsub(/[^0-9.]/, "", $4); print 100-$4}')"
+module.0.enabled    : true
+module.0.interval   : 3
+
+module.1.name       : memory-used
+module.1.cmd        : printf 'MEM\072%sG/%sG' "$(awk '/MemTotal/ {t=$2} /MemAvailable/ {a=$2} END {printf "%.1f", (t-a)/1048576}' /proc/meminfo)" "$(awk '/MemTotal/ {printf "%.1f", $2/1048576}' /proc/meminfo)"
+module.1.enabled    : true
+module.1.interval   : 3
+
+module.2.name       : battery
+module.2.cmd        : printf 'BAT\072%s' "$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null | sed 's/$/%/' || echo 'N/A')"
+module.2.enabled    : true
+module.2.interval   : 30
+
+module.3.name       : datetime
+module.3.cmd        : printf '%s %s%s%s%s%s' "$(date '+%b %d (%A)')" "$(date +%H)" "$(printf '\072')" "$(date +%M)" "$(printf '\072')" "$(date +%S)"
+module.3.enabled    : true
+module.3.interval   : 1

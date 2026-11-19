@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# X11 session launcher for bspwm. Run with startx, for example:
+#   startx ~/.xinitrc.bspwm
+
+[ -f "$HOME/.xprofile" ] && . "$HOME/.xprofile"
+
+userresources="$HOME/.Xresources"
+usermodmap="$HOME/.Xmodmap"
+sysresources="/etc/X11/xinit/.Xresources"
+sysmodmap="/etc/X11/xinit/.Xmodmap"
+
+[ -f "$sysresources" ] && xrdb -merge "$sysresources"
+[ -f "$sysmodmap" ] && xmodmap "$sysmodmap"
+[ -f "$userresources" ] && xrdb -merge "$userresources"
+[ -f "$usermodmap" ] && xmodmap "$usermodmap"
+
+if [ -z "${DBUS_SESSION_BUS_ADDRESS:-}" ]; then
+    eval "$(dbus-launch --sh-syntax --exit-with-session)"
+fi
+
+# Keep the same session helpers used by CWM.
+. "$HOME/.xinitrc.common"
+
+export XCURSOR_THEME=minimal-xcursor
+export XCURSOR_SIZE=16
+
+# sxhkd is deliberately started here rather than by bspwmrc.
+sxhkd -c "$HOME/.config/sxhkd/sxhkdrc" &
+
+# sxbar 
+/usr/bin/sxbar &
+
+exec bspwm

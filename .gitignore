@@ -1,0 +1,8 @@
+# FvwmConsole history
+.FvwmConsole-History
+
+# Suckeless surf
+.surf/cache/
+.surf/certificates/
+.surf/cookies.txt
+.surf/script.js

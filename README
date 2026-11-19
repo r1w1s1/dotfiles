@@ -1,0 +1,16 @@
+home-memory
+
+$HOME is live state.
+Repo is memory.
+
+This repository contains a small set of configuration files
+copied from my home directory after they stabilize.
+
+It is an archive, not a system.
+
+Sync flows one way: home -> repo, never back.
+Cloning this cannot touch your system.
+
+Read.
+Compare.
+Adapt.

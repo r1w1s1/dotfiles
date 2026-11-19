@@ -1,0 +1,133 @@
+# Bindings translated from ~/.cwmrc. This file is intentionally independent
+# from sxhkdrc.agnostic so the CWM behavior, including sudo brightness
+# commands, remains explicit.
+
+# Audio.
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+XF86AudioMicMute
+    /home/r1w1s1/.bin/toggle-call-audio.sh
+
+# Brightness.
+XF86MonBrightnessDown
+    sudo /home/r1w1s1/.bin/brightnessctl.sh set 10%-
+
+XF86MonBrightnessUp
+    sudo /home/r1w1s1/.bin/brightnessctl.sh set +10%
+
+# Lock and launchers.
+super + l
+    xscreensaver-command -lock
+
+super + shift + l
+    xscreensaver-command -lock
+
+F12
+    xscreensaver-command -lock
+
+super + p
+    /home/r1w1s1/.bin/dmenu_run.sh
+
+Print
+    /home/r1w1s1/.bin/screenshot-full.sh
+
+super + Print
+    /home/r1w1s1/.bin/screenshot-area.sh
+
+super + space
+    /home/r1w1s1/.bin/menu
+
+# CWM application menu was available on Super+a and Super+Space.
+super + a
+    /home/r1w1s1/.bin/menu
+
+# Terminal and basic window actions.
+super + shift + Return
+    xterm -name floating-xterm -geometry 120x30 -T terminal -e bash
+
+super + j
+    bspc node -f next.local.!hidden.window
+
+super + k
+    bspc node -f prev.local.!hidden.window
+
+super + c
+    bspc node -c
+
+super + shift + q
+    bspc quit
+
+super + r
+    bspc wm -r
+
+# Layouts and window states.
+# Monocle is the bspwm equivalent of the CWM maximize-style workflow.
+super + m
+    bspc desktop -l next
+
+super + f
+    bspc node -t fullscreen
+
+super + h
+    bspc node -g hidden
+
+super + shift + space
+    bspc node -t pseudo_tiled
+
+# Preselect the split for the next tiled window. This is the closest bspwm
+# equivalent to choosing a vertical/horizontal tile operation.
+super + v
+    bspc node -p south
+
+super + shift + v
+    bspc node -p east
+
+# Desktops/tags: keyboard numbers select Roman-numeral desktop names.
+super + 1
+    bspc desktop -f I
+super + 2
+    bspc desktop -f II
+super + 3
+    bspc desktop -f III
+super + 4
+    bspc desktop -f IV
+super + 5
+    bspc desktop -f V
+super + 6
+    bspc desktop -f VI
+super + 7
+    bspc desktop -f VII
+super + 8
+    bspc desktop -f VIII
+super + 9
+    bspc desktop -f IX
+super + 0
+    bspc desktop -f X
+
+super + shift + 1
+    bspc node -d I
+super + shift + 2
+    bspc node -d II
+super + shift + 3
+    bspc node -d III
+super + shift + 4
+    bspc node -d IV
+super + shift + 5
+    bspc node -d V
+super + shift + 6
+    bspc node -d VI
+super + shift + 7
+    bspc node -d VII
+super + shift + 8
+    bspc node -d VIII
+super + shift + 9
+    bspc node -d IX
+super + shift + 0
+    bspc node -d X

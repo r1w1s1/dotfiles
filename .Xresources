@@ -1,0 +1,254 @@
+! ~/.Xresources
+! Load/reload with:
+!   xrdb -load ~/.Xresources
+
+! ==============================
+!  Global Xft
+! ==============================
+Xft.dpi: 112
+
+! ==============================
+!  XTerm (class: XTerm)
+! ==============================
+
+! --- Fonts ---
+! XTerm*faceName: Iosevka Term
+! XTerm*faceSize: 11
+XTerm*faceName: Ttyp0 OTB
+XTerm*faceSize: 14
+
+! --- Padding ---
+XTerm*internalBorder: 8
+
+! --- Behavior ---
+XTerm*utf8: 1
+XTerm*termName: xterm-256color
+XTerm*saveLines: 1000
+XTerm*allowMouseOps: true
+XTerm*selectToClipboard: true
+! Solid block cursor; cursorBlink disables blinking.
+XTerm*cursorBlink: false
+XTerm*cursorShape: block
+XTerm*cursorBarWidth: 2
+
+! --- Scrollbar ---
+XTerm*scrollBar: true
+XTerm*rightScrollBar: true
+XTerm*scrollBarThickness: 10
+
+! --- SIXEL (if your xterm build supports it) ---
+XTerm*sixelMode: true
+XTerm*sixelScrolling: true
+XTerm*decTerminalID: vt340
+! xterm defaults to a 1000x1000 SIXEL canvas, which clips larger previews.
+! Keep enough room for full-screen image previews from chafa and dfm.
+XTerm*maxGraphicSize: 4096x2160
+
+! --- Colors: soft black for night work (default) ---
+XTerm*background: #101010
+XTerm*foreground: #d8d8d8
+! Pure yellow cursor, matching the Turbo Pascal palette.
+XTerm*cursorColor: #ffff00
+
+! --- Colors: Turbo Pascal blue (alternative) ---
+! XTerm*background: #080b78
+! XTerm*foreground: #d8d8ff
+! XTerm*color0:  #080b78
+! XTerm*color1:  #ff5555
+! XTerm*color2:  #50fa7b
+! XTerm*color3:  #ffff00
+! XTerm*color4:  #6272a4
+! XTerm*color5:  #ff79c6
+! XTerm*color6:  #8be9fd
+! XTerm*color7:  #f8f8f2
+! XTerm*color8:  #44475a
+! XTerm*color9:  #ff6e6e
+! XTerm*color10: #69ff94
+! XTerm*color11: #ffffa5
+! XTerm*color12: #7aa2f7
+! XTerm*color13: #ff92df
+! XTerm*color14: #a4ffff
+! XTerm*color15: #ffffff
+
+XTerm*boldColors: true
+XTerm*colorBDMode: false
+
+! --- Clipboard bindings (robust) ---
+! Ctrl+Shift+C copies selection to CLIPBOARD
+! Ctrl+Shift+V pastes CLIPBOARD
+XTerm*VT100.Translations: #override \
+  Ctrl Shift <KeyPress>C: copy-selection(CLIPBOARD) \n\
+  Ctrl Shift <KeyPress>V: insert-selection(CLIPBOARD)
+
+! ------------------------------------------------------------------
+! Xterm transparency (requires picom)
+! ------------------------------------------------------------------
+
+XTerm*transparent: true
+XTerm*shading: 15
+
+! ==============================
+!  UXTerm (only if you run uxterm)
+!  (uxterm uses class UXTerm, so duplicate the important bits)
+! ==============================
+! UXTerm*faceName: Iosevka Term
+! UXTerm*faceSize: 11
+UXTerm*faceName: Ttyp0 OTB
+UXTerm*faceSize: 14
+UXTerm*internalBorder: 8
+UXTerm*termName: xterm-256color
+UXTerm*saveLines: 1000
+UXTerm*allowMouseOps: true
+UXTerm*selectToClipboard: true
+! Solid block cursor, matching XTerm.
+UXTerm*cursorBlink: false
+UXTerm*cursorShape: block
+UXTerm*scrollBar: true
+UXTerm*rightScrollBar: true
+UXTerm*scrollBarThickness: 10
+! UXTerm*background: #080b78
+UXTerm*background: #101010
+UXTerm*foreground: #d8d8d8
+UXTerm*cursorColor: #ffff00
+UXTerm*VT100.Translations: #override \
+  Ctrl Shift <KeyPress>C: copy-selection(CLIPBOARD) \n\
+  Ctrl Shift <KeyPress>V: insert-selection(CLIPBOARD)
+
+! ==============================
+!  XClock
+! ==============================
+XClock*update: 1
+XClock*analog: False
+XClock*render: True
+XClock*padding: 4
+XClock*face: Liberation Sans:size=20
+XClock*strftime: %a %b %d  %H:%M
+
+! ==============================
+!  XLock
+! ==============================
+XLock.mode: blank
+XLock.mousemotion: on
+XLock.nice: 0
+XLock.program: /usr/games/fortune -a
+
+! ==============================
+!  XScreenSaver unlock dialog
+! ==============================
+! XScreenSaver*Dialog.headingFont: Iosevka Term bold 16
+! XScreenSaver*Dialog.bodyFont: Iosevka Term 14
+! XScreenSaver*Dialog.errorFont: Iosevka Term bold 14
+! XScreenSaver*Dialog.labelFont: Iosevka Term bold 14
+! XScreenSaver*Dialog.unameFont: Iosevka Term 12
+! XScreenSaver*Dialog.buttonFont: Iosevka Term bold 14
+! XScreenSaver*Dialog.dateFont: Iosevka Term 9
+XScreenSaver*Dialog.headingFont: Ttyp0 OTB bold 16
+XScreenSaver*Dialog.bodyFont: Ttyp0 OTB 14
+XScreenSaver*Dialog.errorFont: Ttyp0 OTB bold 14
+XScreenSaver*Dialog.labelFont: Ttyp0 OTB bold 14
+XScreenSaver*Dialog.unameFont: Ttyp0 OTB 12
+XScreenSaver*Dialog.buttonFont: Ttyp0 OTB bold 14
+XScreenSaver*Dialog.dateFont: Ttyp0 OTB 9
+XScreenSaver*passwd.uname: True
+
+! ==============================
+!  XCalc
+! ==============================
+xcalc*font: -b&h-lucida-medium-r-*-*-16-*-*-*-*-*-*-*
+xcalc*Cursor: hand2
+xcalc*ShapeStyle: rectangle
+xcalc*ti.button1.vertDistance: 4
+xcalc*ti.button2.vertDistance: 4
+xcalc*ti.button3.vertDistance: 4
+xcalc*ti.button4.vertDistance: 4
+xcalc*ti.button5.vertDistance: 4
+xcalc*ti.background: gray90
+xcalc*ti.bevel.borderColor: gray65
+xcalc*ti.bevel.borderWidth: 1
+xcalc*ti.bevel.vertDistance: 4
+xcalc*ti.bevel.defaultDistance: 0
+xcalc*ti.bevel.background: rgb:b/c/b
+xcalc*ti.bevel.screen*background: rgb:b/c/b
+xcalc*ti.bevel.screen.borderColor: rgb:b/c/b
+xcalc*ti.bevel.screen.vertDistance: 10
+xcalc*ti.bevel.screen.horizDistance: 10
+xcalc*ti.bevel.screen*left: chainLeft
+xcalc*ti.bevel.screen*right: chainRight
+xcalc*ti.bevel.screen*top: chainTop
+xcalc*ti.bevel.screen*bottom: chainBottom
+xcalc*ti.bevel.screen*LCD.foreground: gray10
+xcalc*ti.bevel.screen*INV.vertDistance: 0
+xcalc*ti.Command.borderColor: gray65
+xcalc*ti.Command.background: gray85
+xcalc*ti.Command.foreground: gray30
+xcalc*ti.button5.background: rgb:e/b/b
+xcalc*ti.button20.background: rgb:e/d/c
+xcalc*ti.button25.background: rgb:e/d/c
+xcalc*ti.button30.background: rgb:e/d/c
+XCalc.ti.button35.label: /
+xcalc*ti.button35.background: rgb:e/d/c
+xcalc*ti.button40.background: rgb:b/b/e
+xcalc*ti.button22.background: gray95
+xcalc*ti.button23.background: gray95
+xcalc*ti.button24.background: gray95
+xcalc*ti.button27.background: gray95
+xcalc*ti.button28.background: gray95
+xcalc*ti.button29.background: gray95
+xcalc*ti.button32.background: gray95
+xcalc*ti.button33.background: gray95
+xcalc*ti.button34.background: gray95
+xcalc*ti.button37.background: gray95
+xcalc*ti.button38.background: gray95
+xcalc*ti.button39.background: gray95
+
+! ==============================
+!  xosview
+! ==============================
+xosview*background: #222222
+xosview*borderwidth: 0
+xosview*font: -uw-ttyp0-medium-r-normal--14-130-75-75-c-70-iso10646-1
+
+! ==============================
+!  xload
+! ==============================
+XLoad*font: -uw-ttyp0-medium-r-normal--14-130-75-75-c-70-iso10646-1
+XLoad.geometry: 401x116
+XLoad*label.label: RachelTyrel
+
+! ==============================
+!  xmenu
+! ==============================
+xmenu.font: Iosevka Term:size=11
+xmenu.background: #1c1c1c
+xmenu.foreground: #cccccc
+xmenu.selbackground: #e0b800
+xmenu.selforeground: #000000
+
+xmenu.border: #e0b800
+xmenu.borderWidth: 2
+
+xmenu.separator: #555555
+xmenu.separatorWidth: 1
+
+xmenu.gap: 4
+xmenu.height: 22
+xmenu.width: 180
+
+! ==============================
+!  Xedit
+! ==============================
+Xedit*Text*font: -misc-fixed-medium-r-normal--13-*
+Xedit*international: True
+
+! --- Clipboard bindings ---
+Xedit*Text.translations: #override \
+  Ctrl<Key>v: insert-selection(PRIMARY,CUT_BUFFER0) \n\
+  Ctrl<Key>x: kill-selection()
+
+! ==============================
+!  XNEdit
+! ==============================
+
+! --- UI font ---
+XNEdit*fontList: -adobe-helvetica-medium-r-normal--12-120-75-75-p-67-iso10646-1
+xnedit*fontList: -adobe-helvetica-medium-r-normal--12-120-75-75-p-67-iso10646-1

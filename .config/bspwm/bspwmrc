@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# Window policy only. Session programs are started by ~/.xinitrc.bspwm.
+
+# Desktops corresponding to the CWM groups. I is the Firefox desktop.
+bspc monitor -d I II III IV V VI VII VIII IX X
+for desktop in I II III IV V VI VII VIII IX X; do
+    bspc desktop "$desktop" -l tiled
+done
+
+# Tiling is the default layout. Monocle is toggled with Super+m from sxhkd.
+bspc config border_width 2
+bspc config window_gap 0
+bspc config top_padding 28
+bspc config split_ratio 0.55
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config focus_follows_pointer false
+bspc config pointer_follows_focus false
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+bspc config pointer_action3 resize_corner
+
+# Match the CWM autogroup rule. Firefox is always placed on the desktop
+# literally named I.
+bspc rule -a Firefox desktop='I'
+bspc rule -a firefox desktop='I'
+
+# The dedicated Super+Shift+Return xterm is floating. Keep its XTerm class
+# so it continues to inherit XTerm* resources; distinguish it by instance.
+bspc rule -a XTerm:floating-xterm state=floating
+
+# Match the CWM ignore rule.
+bspc rule -a xload manage=off
